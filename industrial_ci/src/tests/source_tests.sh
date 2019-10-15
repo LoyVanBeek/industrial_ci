@@ -166,7 +166,12 @@ fi
 
 ici_time_start rosdep_install
 
-rosdep_opts=(-q --from-paths "$CATKIN_WORKSPACE/src" --ignore-src --rosdistro "$ROS_DISTRO" -y)
+declare rosdep_quiet="-q"  # Default to -q for being quiet
+if [ "$ROSDEP_NOT_QUIET" = "true" ]; then
+    rosdep_quiet=''
+fi
+
+rosdep_opts=("$rosdep_quiet" --from-paths "$CATKIN_WORKSPACE/src" --ignore-src --rosdistro "$ROS_DISTRO" -y)
 if [ -n "$ROSDEP_SKIP_KEYS" ]; then
   rosdep_opts+=(--skip-keys "$ROSDEP_SKIP_KEYS")
 fi
