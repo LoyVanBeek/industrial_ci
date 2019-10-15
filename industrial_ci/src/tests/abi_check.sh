@@ -51,8 +51,9 @@ function abi_build_workspace() {
     local workspace="$base/$version"
 
     local cflags="-g -Og"
+    local rosdep_quiet=${ROSDEP_QUIET:-"-q"}  # Default to -q for being quiet
 
-    rosdep install -q --from-paths "$workspace/src" --ignore-src -y
+    rosdep install "$rosdep_quiet" --from-paths "$workspace/src" --ignore-src -y
 
     catkin config --init --install -w "$workspace" --extend "/opt/ros/$ROS_DISTRO" --cmake-args -DCMAKE_C_FLAGS="$cflags" -DCMAKE_CXX_FLAGS="$cflags"
     catkin build -w "$workspace"
