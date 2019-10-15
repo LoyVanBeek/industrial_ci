@@ -58,7 +58,7 @@ function abi_build_workspace() {
         ici_warn "Rosdep will be quiet"
     fi
 
-    rosdep install "$rosdep_quiet" --from-paths "$workspace/src" --ignore-src -y
+    rosdep install --from-paths "$workspace/src" --ignore-src -y
 
     catkin config --init --install -w "$workspace" --extend "/opt/ros/$ROS_DISTRO" --cmake-args -DCMAKE_C_FLAGS="$cflags" -DCMAKE_CXX_FLAGS="$cflags"
     catkin build -w "$workspace"

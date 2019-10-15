@@ -172,7 +172,7 @@ if [ "$ROSDEP_NOT_QUIET" = "true" ]; then
     ici_warn "Rosdep will be quiet"
 fi
 
-rosdep_opts=("$rosdep_quiet" --from-paths "$CATKIN_WORKSPACE/src" --ignore-src --rosdistro "$ROS_DISTRO" -y)
+rosdep_opts=(--from-paths "$CATKIN_WORKSPACE/src" --ignore-src --rosdistro "$ROS_DISTRO" -y)
 if [ -n "$ROSDEP_SKIP_KEYS" ]; then
   rosdep_opts+=(--skip-keys "$ROSDEP_SKIP_KEYS")
 fi
