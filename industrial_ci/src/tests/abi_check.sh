@@ -55,6 +55,7 @@ function abi_build_workspace() {
     local rosdep_quiet="-q"  # Default to -q for being quiet
     if [ "$ROSDEP_NOT_QUIET" = "true" ]; then
         rosdep_quiet=''
+        ici_warn "Rosdep will be quiet"
     fi
 
     rosdep install "$rosdep_quiet" --from-paths "$workspace/src" --ignore-src -y

@@ -169,6 +169,7 @@ ici_time_start rosdep_install
 declare rosdep_quiet="-q"  # Default to -q for being quiet
 if [ "$ROSDEP_NOT_QUIET" = "true" ]; then
     rosdep_quiet=''
+    ici_warn "Rosdep will be quiet"
 fi
 
 rosdep_opts=("$rosdep_quiet" --from-paths "$CATKIN_WORKSPACE/src" --ignore-src --rosdistro "$ROS_DISTRO" -y)
