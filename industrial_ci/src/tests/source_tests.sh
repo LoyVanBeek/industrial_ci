@@ -177,7 +177,12 @@ if [ -n "$ROSDEP_SKIP_KEYS" ]; then
   rosdep_opts+=(--skip-keys "$ROSDEP_SKIP_KEYS")
 fi
 set -o pipefail # fail if rosdep install fails
-rosdep install "${rosdep_opts[@]}" | { grep "executing command" || true; }
+
+if [ "$ROSDEP_NOT_QUIET" = "true" ]; then
+  rosdep install "${rosdep_opts[@]}"
+else
+  rosdep install "${rosdep_opts[@]}" | { grep "executing command" || true; }
+fi
 set +o pipefail
 
 ici_time_end  # rosdep_install
