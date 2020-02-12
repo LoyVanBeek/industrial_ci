@@ -246,6 +246,6 @@ RUN for i in 1 2 3; do { $keycmd; } &&  break || sleep 1; done
 RUN echo "deb ${ROS_REPOSITORY_PATH} \$(lsb_release -sc) main" > /etc/apt/sources.list.d/ros${ROS_VERSION}-latest.list
 
 RUN sed -i "/^# deb.*multiverse/ s/^# //" /etc/apt/sources.list  && apt-get update -qq
-RUN pip install --upgrade pip  # Default version on Ubuntu 16.04 Xenial for ROS kinetic is pip 8.1.1 which does not work well with setuptools
+RUN pip install --upgrade pip==9.0.1  # Default version on Ubuntu 16.04 Xenial for ROS kinetic is pip 8.1.1 which does not work well with setuptools
 EOF
 }
